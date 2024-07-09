@@ -1,4 +1,4 @@
-const baseURL = "http://silviagra.alwaysdata.net:3000"; // URL de tu backend en AlwaysData
+const baseURL = process.env.API_BASE_URL || "http://localhost:3000"; 
 
 document.addEventListener("DOMContentLoaded", () => {
   const btnAgregarProducto = document.getElementById("btnAgregarProducto");

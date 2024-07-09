@@ -39,7 +39,8 @@ document.addEventListener("DOMContentLoaded", async () => {
       };
 
       // URL de tu backend en AlwaysData
-      const baseURL = "http://silviagra.alwaysdata.net:3000";
+     
+      const baseURL = process.env.API_BASE_URL || "http://localhost:3000";
 
       await axios.put(`${baseURL}/productos/${productoId}`, updatedProduct);
       alert("Producto actualizado exitosamente");
