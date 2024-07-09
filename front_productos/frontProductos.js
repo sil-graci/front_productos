@@ -1,3 +1,5 @@
+const baseURL = "http://silviagra.alwaysdata.net:3000"; // URL de tu backend en AlwaysData
+
 document.addEventListener("DOMContentLoaded", () => {
   const btnAgregarProducto = document.getElementById("btnAgregarProducto");
   const formProducto = document.getElementById("formProducto");
@@ -9,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
     /* FUNCION PARA OBTENER LOS DATOS DE NUESTRA API USANDO AXIOS */
     const cargarProductos = async () => {
       try {
-        const respuesta = await axios.get("http://localhost:3030/productos/");
+        const respuesta = await axios.get(`${baseURL}/productos/`);
         const productos = respuesta.data;
 
         // Construir la cadena HTML dinámicamente
@@ -73,14 +75,14 @@ document.addEventListener("DOMContentLoaded", () => {
     // Función para borrar el producto
     const borrarProducto = async (id) => {
       try {
-        await axios.delete(`http://localhost:3030/productos/${id}`);
+        await axios.delete(`${baseURL}/productos/${id}`);
         cargarProductos(); // Volver a cargar los productos después de eliminar
       } catch (error) {
         console.error(`Error al eliminar el producto: ${error}`);
       }
     };
 
-    //FUNCIÓN PARA CREAR UN PRODUCTO
+    // FUNCIÓN PARA CREAR UN PRODUCTO
     // Agregar evento de clic al botón "Agregar producto"
     btnAgregarProducto.addEventListener("click", () => {
       // Alternar la visibilidad del formulario
@@ -109,10 +111,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       try {
         // Enviar los datos del producto al servidor usando Axios
-        const response = await axios.post(
-          "http://localhost:3030/productos",
-          producto
-        );
+        const response = await axios.post(`${baseURL}/productos`, producto);
         console.log(response.data);
         alert("Producto agregado exitosamente");
 
